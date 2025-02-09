@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.geral {
+    background: rgba(40, 172, 14, 0.5);
+    border-radius: 7px;
+    height: 600px;
+    overflow: hidden;
+       
+}
+
+.img {
+   text-align: center;
+   height: 160px;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.conteiner1 {
+    padding-left: 15px;
+    display: flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 15px;
+    
+    
+    
+}
+.conteiner1 input {
+    width: 250px;
+}
+
+.conteiner2 {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 15px;
+    gap: 15px;
+    font-size: 14px;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+.conteiner2 input {
+    width: 75px;
+    height: 30px;
+    overflow: hidden;
+}
+
+.conteiner3 {
+    padding-right:80px;
+    display: flex;
+    justify-content: space-around;
+    overflow: hidden;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  
+}
+
+.botao1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#botao{
+    background: black;
+    color: white;
+    width: 100px;
+    height: 30px; 
+    margin-top: 40px;
+}

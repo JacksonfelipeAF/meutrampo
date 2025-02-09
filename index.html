@@ -1,0 +1,109 @@
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Controle de produção</title>
+        <link rel="stylesheet" href="css/style.css">
+
+
+    </head>
+
+    <body>
+    <form id="forn" class="forn" >
+
+     <div class="geral">
+            
+            <div class="img">
+                <img src="/img/saboraki.webp" id="logo" alt="Logo SaborAki">
+            </div>
+            
+            <div>
+                <h1 class="titulo">Controle de Produção do Sopro</h1>
+            </div> 
+            
+
+            <div class="conteiner1">
+                <div>
+                    <label for="nomes">Nome do Operador</label>
+                    <input type="text" id="nomes" name="nomes" placeholder="Digite seu nome" required>
+                </div>
+                <div>
+                    <label for="hora">Data</label>
+                    <input type="date" name="data de hoje " class="data" required>
+                </div>
+            </div>  
+            
+            <!--turno de trabalho-->
+            <div class="conteiner2">
+                <div> 
+                    <label for="opcao">Turno </label>
+                <select id="opcao" name="opcao">
+                    <option value="opcao1">Manhã</option>
+                    <option value="opcao2">Tarde</option>
+                    <option value="opcao3">Noite</option>
+                </select>
+            </div>
+
+            <!--maquina em uso-->
+            <div> 
+                    <label for="opcao">Maquina a Trabalho </label>
+                <select id="maquina" name="maquina em uso">
+                    <option value="opcao1">Sidel A</option>
+                    <option value="opcao2">Sidel B</option>
+                    <option value="opcao3">Sidel C</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="time">Hora Inicial </label>
+                <input type="time" id="hora" name="hora">
+            </div>
+
+            <div>
+                <label for="time">Hora Final </label>
+                <input type="time" id="hora" name="hora">
+            </div>
+
+            <div>
+                <!--produto em uso-->
+                <label for="opcao">Volume </label>
+                <select id="volume" name="Qual produto está rodando ?">
+                    <option value="opcao1">Agua sem gás</option>
+                    <option value="opcao2">Agua com gás</option>
+                    <option value="opcao3">350 verde</option>
+                    <option value="opcao4">350 cristal</option>
+                    <option value="opcao5">350 vermelha</option>
+                    <option value="opcao6">1 Litro verde</option>
+                    <option value="opcao7">1 Litro cristal</option>
+                    <option value="opcao8">2 Litro verde</option>
+                    <option value="opcao9">2 Litro cristal</option>
+                    <option value="opcao10">3 Litro verde</option>
+                    <option value="opcao11">3 Litro cristal</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="conteiner3 ">
+            <div> 
+                <label for="numero">Total de Horas Trabalhadas :</label>
+                <input id="numero" type="number" placeholder="Digite aqui" required>
+            </div>
+
+            <div>
+                <label for="producao">Total Produzido :</label>
+                <input id="producao" type="number" placeholder="Digite aqui" required>
+            </div>
+        </div>
+
+        <div class="botao1"> 
+            <BUtton id="botao" type="submit">Eviar</BUtton>
+        </div>
+
+    </form>
+</div>
+            
+
+    <script src="js/index.js"></script>
+    </body>
+    </html>
