@@ -22,7 +22,7 @@
                 <h1 class="titulo">Controle de Produção do Sopro</h1>
             </div> 
             
-
+        <div class="tudojunto">
             <div class="conteiner1">
                 <div>
                     <label for="nomes">Nome do Operador</label>
@@ -54,7 +54,7 @@
                     <option value="opcao3">Sidel C</option>
                 </select>
             </div>
-
+            
             <div>
                 <label for="time">Hora Inicial </label>
                 <input type="time" id="hora" name="hora">
@@ -95,6 +95,35 @@
                 <input id="producao" type="number" placeholder="Digite aqui" required>
             </div>
         </div>
+    </div>
+
+    <div class="tabela">
+        <h2>Tabela Interativa de dados</h2>
+
+<div class="form-container">
+    <input type="number" id="grama" placeholder="grama">
+    <input type="number" id="nome" placeholder="lote">
+    <input type="number" id="idade" placeholder="numero da caixa">
+    <input type="number" id="cidade" placeholder="Qtd total">
+    <button onclick="adicionarLinha()">Adicionar</button>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Grama</th>
+            <th>Lote</th>
+            <th>Numero caixa</th>
+            <th>Qtd total</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody id="tabela-corpo">
+        <!-- As linhas serão adicionadas aqui -->
+    </tbody>
+</table>
+
+    </div>  
 
         <div class="botao1"> 
             <BUtton id="botao" type="submit">Eviar</BUtton>
