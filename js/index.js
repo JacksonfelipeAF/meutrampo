@@ -1,38 +1,89 @@
+document.addEventListener("DOMContentLoaded", () => {
+    carregarTabela();
+    atualizarSomaTotal();
+});
 
-    function adicionarLinha() {
-        let grama = document.getElementById("grama").value;
-        let nome = document.getElementById("nome").value;
-        let idade = document.getElementById("idade").value;
-        let cidade = document.getElementById("cidade").value;
+function adicionarLinha() {
+    let grama = document.getElementById("grama").value;
+    let lote = document.getElementById("lote").value;
+    let nCaixa = document.getElementById("n-caixa").value;
+    let total = document.getElementById("total").value;
+    let cor = document.getElementById("cor-preforma").value;
 
-        if (grama === "" || nome === "" || idade === "" || cidade === "") {
-            alert("Preencha todos os campos!");
-            return;
-        }
-
-        let tabela = document.getElementById("tabela-corpo");
-        let novaLinha = tabela.insertRow();
-
-        let cel0 = novaLinha.insertCell(0);
-        let cel1 = novaLinha.insertCell(1);
-        let cel2 = novaLinha.insertCell(2);
-        let cel3 = novaLinha.insertCell(3);
-        let cel4 = novaLinha.insertCell(4);
-
-        cel0.innerHTML = grama;
-        cel1.innerHTML = nome;
-        cel2.innerHTML = idade;
-        cel3.innerHTML = cidade;
-        cel4.innerHTML = '<button onclick="removerLinha(this)">❌</button>';
-
-        // Limpa os campos após adicionar
-        document.getElementById("grama").value = "";
-        document.getElementById("nome").value = "";
-        document.getElementById("idade").value = "";
-        document.getElementById("cidade").value = "";
+    if (grama === "" || lote === "" || nCaixa === "" || total === "") {
+        alert("Preencha todos os campos!");
+        return;
     }
 
-    function removerLinha(botao) {
-        let linha = botao.parentNode.parentNode;
-        linha.parentNode.removeChild(linha);
+    let tabela = document.getElementById("tabela-corpo");
+    let novaLinha = document.createElement("tr");
+
+    novaLinha.innerHTML = `
+        <td>${grama}</td>
+        <td>${lote}</td>
+        <td>${nCaixa}</td>
+        <td class="qtd-total">${total}</td>
+        <td>${cor}</td>
+        <td><button onclick="removerLinha(this)">Remover</button></td>
+    `;
+
+    tabela.appendChild(novaLinha);
+    salvarTabelaNoLocalStorage();
+    atualizarSomaTotal();
+
+    document.getElementById("grama").value = "";
+    document.getElementById("lote").value = "";
+    document.getElementById("n-caixa").value = "";
+    document.getElementById("total").value = "";
+    document.getElementById("cor-preforma").selectedIndex = 0;
+}
+
+function removerLinha(botao) {
+    botao.parentNode.parentNode.remove();
+    salvarTabelaNoLocalStorage();
+    atualizarSomaTotal();
+}
+
+function atualizarSomaTotal() {
+    let total = 0;
+    document.querySelectorAll(".qtd-total").forEach(cell => {
+        total += parseFloat(cell.innerText) || 0;
+    });
+    document.getElementById("soma-total").innerHTML = `<strong>${total}</strong>`;
+}
+
+function salvarTabelaNoLocalStorage() {
+    let tabela = [];
+    document.querySelectorAll("#tabela-corpo tr").forEach(row => {
+        let colunas = row.querySelectorAll("td");
+        tabela.push({
+            grama: colunas[0].innerText,
+            lote: colunas[1].innerText,
+            nCaixa: colunas[2].innerText,
+            total: colunas[3].innerText,
+            cor: colunas[4].innerText
+        });
+    });
+    localStorage.setItem("tabelaPreforma", JSON.stringify(tabela));
+}
+
+function carregarTabela() {
+    let dadosSalvos = localStorage.getItem("tabelaPreforma");
+    if (dadosSalvos) {
+        let tabela = JSON.parse(dadosSalvos);
+        let tabelaCorpo = document.getElementById("tabela-corpo");
+        tabela.forEach(item => {
+            let novaLinha = document.createElement("tr");
+            novaLinha.innerHTML = `
+                <td>${item.grama}</td>
+                <td>${item.lote}</td>
+                <td>${item.nCaixa}</td>
+                <td class="qtd-total">${item.total}</td>
+                <td>${item.cor}</td>
+                <td><button onclick="removerLinha(this)">Remover</button></td>
+            `;
+            tabelaCorpo.appendChild(novaLinha);
+        });
     }
+    atualizarSomaTotal();
+}

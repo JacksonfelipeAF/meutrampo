@@ -12,19 +12,21 @@ body {
 }
 
 .geral {
-    overflow: scroll;
     background: rgba(40, 172, 14, 0.5);
     border-radius: 7px;
     height: 100vh;
     border: 2px solid black;
-       
+    height: 56rem;
+    width:65rem ; 
 }
 
 .tudojunto {
-    margin: 7px;
+    margin: 14px;
     padding: 7px;
-    border: solid 2px black;
     border-radius: 5px;
+    border: 2px solid black;
+    height: 40rem ;
+   
 }
 
 .img {
@@ -38,19 +40,22 @@ body {
 }
 
 .conteiner1 {
-    padding-left: 15px;
     display: flex;
     overflow: hidden;
     flex-wrap: wrap;
     display: flex;
     justify-content: space-evenly;
     gap: 15px;
-    
-    
-    
+      
 }
-.conteiner1 input {
-    width: 250px;
+
+.conteiner1 input{ 
+    width: 200px;
+}
+
+.item {
+   justify-content: center;
+   align-items: center;
 }
 
 .conteiner2 {
@@ -65,9 +70,6 @@ body {
     flex-wrap: wrap;
 }
 
-.conteiner2 input {
-    overflow: hidden;
-}
 
 select {
     height: 30px;
@@ -79,14 +81,13 @@ select {
 }
 
 .conteiner3 {
-    padding-right:80px;
     display: flex;
     justify-content: space-around;
     overflow: hidden;
     flex-wrap: wrap;
     display: flex;
     flex-direction: row;
-    gap: 15px;
+    gap: 5px;
   
 }
 
@@ -96,7 +97,8 @@ select {
     align-items: center;
 }
 
-#botao{
+.botao{
+    border-radius: 5px;
     background: black;
     color: white;
     width: 100px;
@@ -143,5 +145,9 @@ button {
     cursor: pointer;
 }
 button:hover {
-    background-color: #218838;
+    background-color: #14e426;
+}
+#cor {
+    height: 2.3rem;
+    width: 5rem;
 }

@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Controle de produção</title>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="./css/class.css">
 
 
     </head>
@@ -22,13 +23,13 @@
                 <h1 class="titulo">Controle de Produção do Sopro</h1>
             </div> 
             
-        <div class="tudojunto">
+            <div class="tudojunto">
             <div class="conteiner1">
-                <div>
+                <div class="item">
                     <label for="nomes">Nome do Operador</label>
                     <input type="text" id="nomes" name="nomes" placeholder="Digite seu nome" required>
                 </div>
-                <div>
+                <div class="item">
                     <label for="hora">Data</label>
                     <input type="date" name="data de hoje " class="data" required>
                 </div>
@@ -90,44 +91,61 @@
                 <input id="numero" type="number" placeholder="Digite aqui" required>
             </div>
 
+            <div> 
+                <label for="numero">produção por hora:</label>
+                <input id="numero" type="number" placeholder="Digite aqui" required>
+            </div>
+
             <div>
                 <label for="producao">Total Produzido :</label>
                 <input id="producao" type="number" placeholder="Digite aqui" required>
             </div>
         </div>
-    </div>
+    
 
     <div class="tabela">
         <h2>Tabela Interativa de dados</h2>
 
-<div class="form-container">
-    <input type="number" id="grama" placeholder="grama">
-    <input type="number" id="nome" placeholder="lote">
-    <input type="number" id="idade" placeholder="numero da caixa">
-    <input type="number" id="cidade" placeholder="Qtd total">
-    <button onclick="adicionarLinha()">Adicionar</button>
-</div>
-
-<table>
-    <thead>
-        <tr>
-            <th>Grama</th>
-            <th>Lote</th>
-            <th>Numero caixa</th>
-            <th>Qtd total</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody id="tabela-corpo">
-        <!-- As linhas serão adicionadas aqui -->
-    </tbody>
-</table>
-
-    </div>  
-
-        <div class="botao1"> 
-            <BUtton id="botao" type="submit">Eviar</BUtton>
+        <div class="form-container">
+            <input type="number" id="grama" placeholder="grama">
+            <input type="number" id="lote" placeholder="lote">
+            <input type="number" id="n-caixa" placeholder="numero da caixa">
+            <input type="number" id="total" placeholder="Qtd total">
+            
+            <select id="cor-preforma">
+                <option value="Cristal">Cristal</option>
+                <option value="Verde">Verde</option>
+            </select>
+        
+            <button onclick="adicionarLinha()">Adicionar</button>
         </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Grama</th>
+                    <th>Lote</th>
+                    <th>Número da Caixa</th>
+                    <th>Qtd Total</th>
+                    <th>Cor Pré Forma</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-corpo">
+                <!-- Linhas adicionadas aqui -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"><strong>Total Geral:</strong></td>
+                    <td id="soma-total"><strong>0</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+            </tfoot>
+        </table>
+        <button class="botao" type="submit">enviar</button>
+    </div>  
+ 
+</div>
 
     </form>
 </div>
