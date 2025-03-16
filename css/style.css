@@ -5,27 +5,32 @@
 }
 
 body {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+   
 }
 
 .geral {
     background: rgba(40, 172, 14, 0.5);
     border-radius: 7px;
-    height: 100vh;
     border: 2px solid black;
-    height: 56rem;
-    width:65rem ; 
+    width: 90%;
+    max-width: 1024px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 .tudojunto {
-    margin: 14px;
+    width: 100%;
     padding: 7px;
     border-radius: 5px;
     border: 2px solid black;
-    height: 40rem ;
+    overflow: hidden;
+    
    
 }
 
@@ -75,19 +80,21 @@ select {
     height: 30px;
 }
 
-#hora{
+#hora-inicial {
   height: 30px;
   width: 100px;
 }
+#hora-final{
+    height: 30px;
+    width: 100px;
+  }
 
 .conteiner3 {
-    display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     overflow: hidden;
     flex-wrap: wrap;
     display: flex;
-    flex-direction: row;
-    gap: 5px;
+   
   
 }
 
@@ -99,7 +106,7 @@ select {
 
 .botao{
     border-radius: 5px;
-    background: black;
+    background:#4CAF50;
     color: white;
     width: 100px;
     height: 30px; 
@@ -108,8 +115,11 @@ select {
 
 .tabela {
     font-family: Arial, sans-serif;
-    margin: 20px;
     text-align: center;
+        width: 100%; /* Garante que ela não ultrapasse o contêiner */
+        overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
+        padding: 10px;
+        box-sizing: border-box; /* Garante que padding não aumente a largura */
 }
 table {
     width: 100%;
@@ -135,7 +145,7 @@ tr:nth-child(even) {
 input {
     padding: 10px;
     margin: 5px;
-    width: 150px;
+    width: 7rem;
 }
 button {
     padding: 10px 15px;
@@ -151,3 +161,7 @@ button:hover {
     height: 2.3rem;
     width: 5rem;
 }
+
+
+
+
