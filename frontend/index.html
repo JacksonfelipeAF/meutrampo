@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Produção</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/resposive.css">
+    
+</head>
+<body>
+    <form id="forn" class="forn">
+        <div class="geral">
+            <div class="img">
+                <img src="/img/saboraki.webp" id="logo" alt="Logo SaborAki">
+            </div>
+            <div>
+                <h1 class="titulo">Controle de Produção do Sopro</h1>
+            </div>
+
+            <div class="tudojunto">
+                <!-- Dados do Operador e Data -->
+                <div class="conteiner1">
+                    <div class="item">
+                        <label for="nomes">Nome do Operador:</label>
+                        <input type="text" id="nomes" name="nomes" placeholder="Digite seu nome" required>
+                    </div>
+                    <div class="item">
+                        <label for="hora">Data:</label>
+                        <input type="date" name="data_de_hoje" class="data" required>
+                    </div>
+                </div>  
+
+                <!-- Turno e Máquina -->
+                <div class="conteiner2">
+                    <div> 
+                        <label for="opcao">Turno:</label>
+                        <select id="opcao" name="opcao">
+                            <option value="opcao1">Manhã</option>
+                            <option value="opcao2">Tarde</option>
+                            <option value="opcao3">Noite</option>
+                        </select>
+                    </div>
+                    <div> 
+                        <label for="opcao">Máquina em uso:</label>
+                        <select id="maquina" name="maquina_em_uso">
+                            <option value="opcao1">Sidel A</option>
+                            <option value="opcao2">Sidel B</option>
+                            <option value="opcao3">Sidel C</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="time">Hora Inicial:</label>
+                        <input type="time" id="hora-inicial" name="hora_inicial">
+                    </div>
+                    <div>
+                        <label for="time">Hora Final:</label>
+                        <input type="time" id="hora-final" name="hora_final">
+                    </div>
+                    <div>
+                        <label for="opcao">Volume:</label>
+                        <select id="volume" name="Qual produto está rodando ?">
+                            <option value="opcao1">Água sem gás</option>
+                            <option value="opcao2">Água com gás</option>
+                            <option value="opcao3">350 verde</option>
+                            <option value="opcao4">350 cristal</option>
+                            <option value="opcao5">350 vermelha</option>
+                            <option value="opcao6">1 Litro verde</option>
+                            <option value="opcao7">1 Litro cristal</option>
+                            <option value="opcao8">2 Litro verde</option>
+                            <option value="opcao9">2 Litro cristal</option>
+                            <option value="opcao10">3 Litro verde</option>
+                            <option value="opcao11">3 Litro cristal</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="conteiner3">
+                    <div> 
+                        <label for="numero">Total de Horas Trabalhadas:</label>
+                        <input id="horas_trabalhadas" type="number" placeholder="Digite aqui">
+                    </div>
+
+                    <div> 
+                        <label for="numero">Produção por hora:</label>
+                        <input id="producao_por_hora"  type="number" placeholder="Digite aqui">
+                    </div>
+
+                    <div>
+                        <label for="producao">Total Produzido :</label>
+                        <input id="totalProduzido" type="number" placeholder="Total Produzido">
+                    </div>
+                </div>
+
+                <div class="tabela">
+                    <h2>Tabela Interativa de dados</h2>
+                    <div class="form-container">
+                        <input type="number" id="grama" placeholder="grama">
+                        <input type="number" id="lote" placeholder="lote">
+                        <input type="number" id="n-caixa" placeholder="número da caixa">
+                        <input type="number" id="total" placeholder="Qtd total">
+                        <input type="number" id="p-preforma" placeholder="p-preforma">
+<input type="number" id="p-garrafa" placeholder="p-garrafa">
+
+                        <select id="cor-preforma">
+                            <option value="Cristal">Cristal</option>
+                            <option value="Verde">Verde</option>
+                        </select>
+                        <button type="button" onclick="adicionarLinha()">Adicionar</button>
+
+                    </div>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Grama</th>
+                                <th>Lote</th>
+                                <th>Nº Caixa</th>
+                                <th>Qtd Total</th>
+                                <th>Perda Preforma</th>
+                                <th>Perda Garrafa</th>
+                                <th>Cor Pré Forma</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-corpo">
+                            <!-- Linhas serão inseridas aqui -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"><strong>Total Geral:</strong></td>
+                                <td id="soma-total"><strong>0</strong></td>
+                                <td id="soma-preforma"><strong>0</strong></td>
+                                <td id="soma-garrafa"><strong>0</strong></td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>  
+
+                <!-- E-mail -->
+                <div>
+                    <label for="email-destino">E-mail de Destino:</label>
+                    <input type="email" id="email-destino" placeholder="Digite o e-mail" required>
+                </div>
+
+            </div>
+            <button type="button" onclick="enviarEmail()">Enviar por E-mail</button>
+    </form>
+
+       <script>
+            // Função para enviar os dados da tabela por e-mail
+            function enviarEmail() {
+    const destinatario = document.getElementById("email-destino").value;
+    const assunto = "Relatório de Produção";
+    const mensagem = "Segue em anexo o relatório da produção, incluindo as perdas e o total geral.";
+
+    // Geração do CSV com os dados da tabela
+    let csv = "Grama,Lote,Nº Caixa,Total,Perda Preforma,Perda Garrafa,Cor\n";  // Cabeçalhos das colunas
+    let somaTotal = 0;  // Variável para calcular o total geral
+    let somaPerdaPreforma = 0;  // Variável para somar as perdas de preforma
+    let somaPerdaGarrafa = 0;  // Variável para somar as perdas de garrafa
+
+    // Percorrer todas as linhas da tabela
+    document.querySelectorAll("#tabela-corpo tr").forEach(linha => {
+        let colunas = linha.querySelectorAll("td");
+
+        // Valores das células para cada linha
+        let grama = colunas[0].innerText;
+        let lote = colunas[1].innerText;
+        let numeroCaixa = colunas[2].innerText;
+        let total = parseFloat(colunas[3].innerText) || 0; // A coluna de "Total"
+        let perdaPreforma = parseFloat(colunas[4].innerText) || 0; // A coluna de "Perda Preforma"
+        let perdaGarrafa = parseFloat(colunas[5].innerText) || 0; // A coluna de "Perda Garrafa"
+        let cor = colunas[6].innerText;
+
+        // Adicionar os dados da linha ao CSV
+        let linhaCSV = `${grama},${lote},${numeroCaixa},${total},${perdaPreforma},${perdaGarrafa},${cor}`;
+        csv += linhaCSV + "\n";  // Adiciona a linha ao CSV
+
+        // Atualizar as somas
+        somaTotal += total;
+        somaPerdaPreforma += perdaPreforma;
+        somaPerdaGarrafa += perdaGarrafa;
+    });
+
+    // Adicionar o total geral, perda de preforma e perda de garrafa ao final do CSV
+    csv += `\nTotal Geral,,,,${somaTotal},,\n`;
+    csv += `Total Perda Preforma,,,,${somaPerdaPreforma},,\n`;
+    csv += `Total Perda Garrafa,,,,${somaPerdaGarrafa},,\n`;
+
+    console.log(csv);  // Verifique no console a estrutura do CSV
+
+    // Enviar o e-mail usando a API do backend
+    fetch("http://localhost:3000/enviar-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ destinatario, assunto, mensagem, dadosCSV: csv })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("E-mail enviado com sucesso!");
+        } else {
+            alert("Erro ao enviar o e-mail.");
+        }
+    })
+    .catch(error => {
+        alert("Erro ao enviar o e-mail: " + error.message);
+    });
+}
+
+
+        </script>
+        <script src="./js/index.js" defer></script>
+       
+
+</body>
+</html>
